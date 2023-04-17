@@ -5,11 +5,11 @@ jobs:
   strategy:
       matrix:
         specs: [cypress/e2e/1-getting-started/todo.cy.js, cypress/e2e/2-advanced-examples/actions.cy.js]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
-        with:
-          spec: $${{matrix.specs}}
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Cypress run
+      uses: cypress-io/github-action@v5
+      with:
+        spec: ${{ matrix.specs }}

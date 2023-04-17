@@ -2,6 +2,9 @@ name: e2e-tests
 on: [workflow_dispatch]
 jobs:
   cypress-run:
+  strategy:
+      matrix:
+        specs: [cypress/e2e/1-getting-started/todo.cy.js, cypress/e2e/2-advanced-examples/actions.cy.js]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -9,4 +12,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          spec: cypress/e2e/1-getting-started/todo.cy.js
+          spec: $${{matrix.specs}}
